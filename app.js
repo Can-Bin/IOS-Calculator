@@ -39,7 +39,7 @@ window.onload = function(){
     
 
     document.getElementById("equation").addEventListener("click", function(){
-
+        
         if(selectedOperator == "+"){
             screen.innerHTML = parseFloat(leftPart)  + parseFloat(rightPart);
         }
@@ -83,7 +83,17 @@ window.onload = function(){
         }, false);
     
         document.getElementById("dot").addEventListener("click", function(){
-            screen.innerHTML += ".";
+            if(rightPart == "")
+            {
+                leftPart+= "." ;
+                screen.innerHTML = leftPart 
+            }
+            else
+            {
+                rightPart+= ".";
+                screen.innerHTML = leftPart + selectedOperator + rightPart ;
+
+            }
         }, false); 
 
 };
