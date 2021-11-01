@@ -39,7 +39,7 @@ window.onload = function(){
     
 
     document.getElementById("equation").addEventListener("click", function(){
-        
+ 
         if(selectedOperator == "+"){
             screen.innerHTML = parseFloat(leftPart)  + parseFloat(rightPart);
         }
@@ -73,19 +73,27 @@ window.onload = function(){
     
         }, false);
     
-        // document.getElementById("plus-minus").addEventListener("click", function(){
-        //     leftPart *= -1;
-        //     screen.innerHTML = parseFloat(leftPart);
-        // }, false);
+        document.getElementById("plus-minus").addEventListener("click", function(){
+            leftPart *= -1;
+        }, false);
     
         document.getElementById("backspace").addEventListener("click", function(){
-            screen.innerHTML = screen.innerHTML.substr(0, screen.innerHTML.length-1) 
+            if(leftPart != "" && rightPart == ""){
+                screen.innerHTML= screen.innerHTML.slice(0, -1);
+                leftPart = leftPart.slice(0, -1) 
+            }
+
+            if(leftPart != "" && rightPart != ""){
+                screen.innerHTML= screen.innerHTML.slice(0, -1);
+                rightPart = rightPart.slice(0, -1) 
+            }
+            
         }, false);
     
         document.getElementById("dot").addEventListener("click", function(){
             if(rightPart == "")
             {
-                leftPart+= "." ;
+                leftPart+= ".";
                 screen.innerHTML = leftPart 
             }
             else
